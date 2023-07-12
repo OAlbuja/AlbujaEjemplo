@@ -1,8 +1,68 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Tienda de Relojes - TempoQuito EC";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="jumbotron">
+    <h1 class="display-4">Bienvenido a TempoQuito EC</h1>
+    <p class="lead">Descubre la elegancia en cada momento con TempoQuito.</p>
+    <hr class="my-4">
+    <p>
+        Encuentra una amplia selección de relojes de alta calidad y estilo. Compra fácilmente desde la comodidad de tu hogar.
+        Envío rápido y seguro. ¡Realza tu estilo con nosotros!
+    </p>
+</div>
+
+<div class="row mb-3" style="margin-bottom: 50px;">
+    <div class="col-md-12">
+        <div style="width: 100%; height: 540px; overflow: hidden;">
+            <img src="~/images/TempoQuito.png" style="object-fit: cover; width: 100%; height: 100%;" alt="Banner TempoQuito">
+        </div>
+    </div>
+</div>
+
+<div class="section-header text-center" style="margin-bottom: 50px;">
+    <!-- Ajusta el valor del margen inferior según el espacio deseado -->
+    <h2>¡NUEVA COLECCIÓN!</h2>
+</div>
+
+<style>
+    .custom-img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+    }
+</style>
+
+<div class="row mb-3 text-center">
+    @foreach (var producto in Aplicacion1.Utils.UtilsReloj.listProducto)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <div class="text-center">
+                    <!-- Agregar la clase text-center aquí -->
+                    <img src="~/images/@producto.codeNumber" class="card-img-top custom-img" alt="@producto.name">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@producto.name</h5>
+                    <p class="card-text">Precio: @producto.price</p>
+                    <p class="card-text">Cantidad: @producto.quantity</p>
+                    <a href="#" class="btn btn-info">Comprar ahora</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-12">
+        <h2>Preguntas frecuentes</h2>
+        <ul>
+            <li>¿Cómo puedo pagar?</li>
+            <p>Aceptamos pagos con tarjeta de crédito y débito, transferencias bancarias y depósitos en efectivo.</p>
+            <li>¿Cuánto tarda en llegar mi pedido?</li>
+            <p>El tiempo de entrega depende del método de pago que elijas y de tu ubicación. En general, el proceso de compra y entrega puede tardar de 1 a 3 días hábiles.</p>
+            <li>¿Qué hago si tengo un problema con mi pedido?</li>
+            <p>Ponte en contacto con nuestro servicio de atención al cliente y te ayudaremos a resolver cualquier problema.</p>
+        </ul>
+    </div>
 </div>

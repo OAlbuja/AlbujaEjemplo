@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Aplicacion1.Models.Usuarios>
+
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Lista Usuarios</h1>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        @ViewBag.Accion
+    </div>
+    <div class="card-body">
+        <a asp-action="UsuariosVentanaEdicion" asp-controller="Usuarios" asp-route-cedula="0" class="btn btn-success btn-sm">Nuevo Usuario</a>
+        <hr />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID Cliente</th>
+                    <th>Nombre</th>
+                    <th>Cedula</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.idCliente</td>
+                        <td>@item.nombre</td>
+                        <td>@item.cedula</td>
+                        <td>@item.direccion</td>
+                        <td>@item.telefono</td>
+                        <td>
+                            <a asp-action="UsuariosVentanaEdicion" asp-controller="Usuarios" asp-route-cedula="@item.cedula" class="btn btn-primary btn-sm">Editar</a>
+                            <a asp-action="Eliminar" asp-controller="Usuarios" asp-route-cedula="@item.cedula" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (!Model.Any())
+{
+    <script>
+        alert("No se encontraron usuarios.");
+    </script>
+}
